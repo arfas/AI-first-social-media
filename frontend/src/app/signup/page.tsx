@@ -16,7 +16,7 @@ export default function SignUpPage() {
     setSuccess('');
 
     try {
-      const response = await axios.post('http://localhost:8091/auth/signup', {
+      const response = await axios.post('http://localhost:8083/auth/signup', {
         username,
         email,
         password,
