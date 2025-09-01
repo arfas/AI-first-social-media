@@ -20,8 +20,8 @@ public class SimpleFeedRanker implements FeedRanker {
     }
 
     @Override
-    public List<Post> rank(Long userId, List<Post> posts) {
-        List<Follow> following = userServiceClient.getFollowing(userId);
+    public List<Post> rank(Long userId, List<Post> posts, String authHeader) {
+        List<Follow> following = userServiceClient.getFollowing(userId, authHeader);
         Set<Long> followedUserIds = following.stream()
                 .map(Follow::getFollowedId)
                 .collect(Collectors.toSet());

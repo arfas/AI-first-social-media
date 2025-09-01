@@ -3,6 +3,8 @@ package com.aifirst.social.service;
 import com.aifirst.social.dto.Follow;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -21,11 +23,15 @@ public class UserServiceClient {
         this.userServiceUrl = userServiceUrl;
     }
 
-    public List<Follow> getFollowing(Long userId) {
+    public List<Follow> getFollowing(Long userId, String authHeader) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", authHeader);
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
         ResponseEntity<List<Follow>> response = restTemplate.exchange(
                 userServiceUrl + "/follow/following/" + userId,
                 HttpMethod.GET,
-                null,
+                entity,
                 new ParameterizedTypeReference<List<Follow>>() {}
         );
         return response.getBody();

@@ -24,9 +24,9 @@ public class FeedController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<List<Post>> getFeed(@PathVariable Long userId) {
-        List<Post> allPosts = contentServiceClient.getAllContent();
-        List<Post> rankedPosts = feedRanker.rank(userId, allPosts);
+    public ResponseEntity<List<Post>> getFeed(@PathVariable Long userId, @RequestHeader("Authorization") String authHeader) {
+        List<Post> allPosts = contentServiceClient.getAllContent(authHeader);
+        List<Post> rankedPosts = feedRanker.rank(userId, allPosts, authHeader);
         return ResponseEntity.ok(rankedPosts);
     }
 }
