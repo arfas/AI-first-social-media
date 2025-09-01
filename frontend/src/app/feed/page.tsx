@@ -16,12 +16,14 @@ interface Post {
 }
 
 function FeedPage() {
-  const { user } = useAuth();
+  const { user, token } = useAuth();
   const { data: posts, isLoading, error, refetch } = useQuery<Post[]>({
     queryKey: ['feed', user?.sub],
     queryFn: async () => {
       // FIXME: use the actual user id from the user object
-      const response = await axios.get(`http://localhost:8083/feed/1`);
+      const response = await axios.get(`http://localhost:8091/feed/1`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       return response.data;
     },
     enabled: !!user,
