@@ -10,6 +10,7 @@ spring:
             allowedMethods:
               - GET
               - POST
+              - OPTIONS
             allowedHeaders: "*"
       routes:
         - id: user-service
