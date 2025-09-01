@@ -17,7 +17,7 @@ export default function LoginPage() {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:8083/auth/login', {
+      const response = await axios.post('http://localhost:8091/auth/login', {
         username: email, // Using email as username for login
         password,
       });
