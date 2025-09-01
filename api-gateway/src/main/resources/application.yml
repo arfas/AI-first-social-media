@@ -39,4 +39,4 @@ springdoc:
         url: /feed-service/v3/api-docs
 
 app:
-  jwtSecret: some-secret-key-that-is-long-enough
+  jwtSecret: ThisIsA-VeryLongAndSecureSecretKey-ForOurAiFirstSocialPlatform-2025-WithSomeExtraBytes-AndNumbers-1234567890!
