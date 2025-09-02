@@ -12,6 +12,7 @@ spring:
               - POST
               - OPTIONS
             allowedHeaders: "*"
+      sensitive-headers:
       routes:
         - id: user-service
           uri: http://localhost:8080
